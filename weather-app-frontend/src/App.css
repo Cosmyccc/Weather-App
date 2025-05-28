@@ -1,0 +1,102 @@
+:root {
+  --clr-primary: #002550;
+  --clr-secondary: #153a38;
+  --day-bg: rgba(126, 176, 217, 0.85);
+  --night-bg: rgba(5, 15, 32, 0.85);
+  --day-text: #002550;
+  --night-text: #e6e6e6;
+  --error: #dc2c58;
+  --input-day: rgba(255, 255, 255, 0.8);
+  --input-night: rgba(0, 0, 0, 0.6);
+}
+
+body {
+  font-family: "Sora", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.weatherApp {
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  transition: background 0.5s ease;
+}
+
+.weatherApp.daytime {
+  background: url('./assets/day-time.svg') no-repeat center center;
+  background-size: cover;
+}
+
+.weatherApp.nighttime {
+  background: url('./assets/night-sky.svg') no-repeat center center;
+  background-size: cover;
+}
+
+.weatherContainer {
+  width: calc(100% - 40px);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  max-width: 600px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  place-self: center;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 90px;
+  transition: all 0.5s ease;
+}
+
+.weatherContainer.daytime-bg {
+  background: var(--day-bg);
+  color: var(--day-text);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.weatherContainer.nighttime-bg {
+  background: var(--night-bg);
+  color: var(--night-text);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Input field styles */
+.weatherContainer input {
+  background: var(--input-day);
+  color: var(--clr-primary);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.weatherContainer.nighttime-bg input {
+  background: var(--input-night);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.weatherContainer input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.weatherContainer.nighttime-bg input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.error {
+  color: var(--error);
+}
+
+.flex-align-justify-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-align-justify-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mt-2 {
+  margin-top: 1rem;
+}

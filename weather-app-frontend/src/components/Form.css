@@ -1,0 +1,47 @@
+.weather-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-group {
+  display: flex;
+  gap: 10px;
+}
+
+input#location {
+  flex-grow: 1;
+  padding: 12px 15px;
+  border-radius: 25px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"] {
+  padding: 12px 20px;
+  border-radius: 25px;
+  background: var(--clr-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+/* Night mode styles */
+.night-input {
+  background: rgba(0, 0, 0, 0.6) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.night-button {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}

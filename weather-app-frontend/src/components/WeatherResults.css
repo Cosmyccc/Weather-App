@@ -1,0 +1,63 @@
+.weather__results {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.cityName {
+  margin: 1rem auto 0;
+  letter-spacing: 5px;
+  font-size: 3.75rem;
+  font-weight: 700;
+  text-align: center;
+  transition: color 0.5s ease;
+}
+
+.cityName.night-text {
+  color: #e6e6e6;
+}
+
+.country {
+  color: var(--clr-secondary);
+  display: block;
+  text-transform: uppercase;
+  font-size: 1.55rem;
+  font-weight: 300;
+  text-align: center;
+  transition: color 0.5s ease;
+}
+
+.country.night-text {
+  color: #b8b8b8;
+}
+
+.weather__temperature {
+  position: relative;
+  z-index: 5;
+  margin: 1rem auto 0;
+  gap: 2rem;
+}
+
+.weather__current-temp {
+  display: block;
+  font-size: 8rem;
+  text-align: center;
+  text-shadow: 0px 0px 2px rgba(230, 236, 244, 0.5);
+  transition: color 0.5s ease;
+}
+
+.weather__current-temp.night-text {
+  color: #ffffff;
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.3);
+}
+
+.deg {
+  font-size: 3rem;
+  vertical-align: super;
+}
+
+.error-message {
+  color: var(--error);
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 2rem;
+}
