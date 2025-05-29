@@ -1,17 +1,30 @@
 version: '3.8'
-services:
-  frontend:
-    build: ./weather-app-frontend
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
-    environment:
-      - VITE_SERVER_URL=http://backend:8080
 
+services:
   backend:
-    build: ./weather-app-backend/weather-app-backend
+    build: 
+      context: ./weather-app-backend/weather-app-backend
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=prod
+    networks:
+      - weather-app-network
+
+  frontend:
+    build:
+      context: ./weather-app-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      - VITE_SERVER_URL=http://localhost:8080
+    depends_on:
+      - backend
+    networks:
+      - weather-app-network
+
+networks:
+  weather-app-network:
+    driver: bridge 
