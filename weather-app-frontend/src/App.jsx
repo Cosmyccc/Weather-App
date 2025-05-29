@@ -20,28 +20,40 @@ function App() {
   const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:3000'
 
   const getWeather = async () => {
-    try {
-      const response = await fetch(
-        `${import.meta.env.VITE_SERVER_URL}/weather/today`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify({ location: location.trim() }),
-          credentials: "include" // Only if using cookies
-        }
-      );
-      
-      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-      const data = await response.json();
-      setWeatherData(data);
-    } catch (err) {
-      console.error("Fetch Error:", err);
-      toast.error("Failed to fetch weather data");
+    if (!location.trim()) {
+      toast.error('Please enter a location')
+      return
     }
-  };
+
+    setIsLoading(true)
+    setWeatherData(null)
+
+    try {
+      const capitalizedLocation = location.trim().charAt(0).toUpperCase() + location.trim().slice(1)
+
+      const response = await fetch(`${SERVER_URL}/weather/today`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ location: capitalizedLocation })
+      })
+
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`)
+      
+      const data = await response.json()
+      console.log('Backend Response:', data)
+
+      if (data.error) {
+        toast.error(data.message || 'City not found')
+      } else {
+        setWeatherData(data)
+      }
+    } catch (err) {
+      console.error('Fetch Error:', err)
+      toast.error(err.message || 'Failed to fetch weather data')
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
