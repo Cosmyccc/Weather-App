@@ -3,8 +3,8 @@ version: '3.8'
 services:
   backend:
     build: 
-      context: ./weather-app-backend/weather-app-backend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: weather-app-backend/weather-app-backend/Dockerfile
     ports:
       - "8080:8080"
     environment:
@@ -14,8 +14,8 @@ services:
 
   frontend:
     build:
-      context: ./weather-app-frontend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: weather-app-frontend/Dockerfile
     ports:
       - "80:80"
     environment:
